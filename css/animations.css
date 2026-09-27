@@ -1,28 +1,15 @@
 /* ============================================
-   ANIMATIONS.CSS — All @keyframes
+   ANIMATIONS.CSS
    ============================================ */
 
 @keyframes envelopeFloat {
   0%, 100% { transform: translateY(0px); }
-  50%      { transform: translateY(-10px); }
-}
-
-.envelope {
-  animation: envelopeFloat 3.5s ease-in-out infinite;
-}
-
-@keyframes sealGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(201, 161, 90, 0.3); }
-  50%      { box-shadow: 0 0 30px rgba(201, 161, 90, 0.6); }
-}
-
-.envelope-seal {
-  animation: sealGlow 2.5s ease-in-out infinite;
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in-up {
@@ -31,7 +18,7 @@
 
 @keyframes fadeIn {
   from { opacity: 0; }
-  to   { opacity: 1; }
+  to { opacity: 1; }
 }
 
 .fade-in {
@@ -40,30 +27,36 @@
 
 @keyframes heartPulse {
   0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.25); }
+  50% { transform: scale(1.2); }
 }
 
 .calendar-heart {
   display: inline-block;
-  animation: heartPulse 1.5s ease-in-out infinite;
+  animation: heartPulse 1.6s ease-in-out infinite;
 }
 
-/* ============ Envelope opening sequence ============ */
+/* ============ Envelope opening ============ */
 .envelope-flap.open {
   transform: rotateX(180deg);
-  z-index: 0;
+  z-index: 1;
 }
 
 #envelope-screen.closing {
-  animation: envelopeScreenExit 1.2s ease forwards;
+  animation: envelopeScreenExit 1.3s ease forwards;
 }
 
 @keyframes envelopeScreenExit {
   from { opacity: 1; transform: scale(1); }
-  to   { opacity: 0; transform: scale(0.85); pointer-events: none; }
+  to { opacity: 0; transform: scale(0.9); pointer-events: none; }
 }
 
 #invitation-screen.revealed {
   display: block;
   animation: fadeInUp 1.4s ease forwards;
+}
+
+/* ============ Vinyl spin ============ */
+@keyframes vinylSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

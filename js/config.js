@@ -4,7 +4,7 @@
 // ============================================
 
 // Paste the Web App URL you copied from Apps Script deployment
-const APPS_SCRIPT_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSwvkIJeZm8e6PVJsn2M11fw1RocPt-yofLH-pt53lSd4smQvFveXeVjYPqwxucZYhYU_cjuYxJNN5o2f6P9MEwRsIwROZtTfeXy3JaMeYlElhM6QMVkwPV8GqTrHusZqYJ_KALG8uGfNvtInaPe4VHPsRnCKZqEFfyhNyWDV0eD8Rfzdk5JqiB6IslzEUT32aHuyAXW_25BM8h-sSVfP9W8JKdibNj7LLhFKojA7LWOzPISn4ans_46DN1OnhVosIHQw4U7WHf0grcRz7wezswJkg-sw&lib=MG9KdkebDlVH7A5aCFhpXQWffYrnCqf-1";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVm587iZFGYbMmbEKnUNZkGotEh84n2prI4Og5UIrqSemJ1HBWctlUDj0OXvbcV7Ma/exec";
 
 // Admin dashboard password (change this to something only you know)
 const ADMIN_PASSWORD = "ChangeThisPassword123";

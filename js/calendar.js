@@ -52,7 +52,12 @@ function initCalendar() {
 
       if (day === HIGHLIGHT_DAY) {
         cell.classList.add("highlight");
-        cell.innerHTML = day + '<span class="calendar-heart">💛</span>';
+        cell.innerHTML =
+          '<svg class="heart-outline" viewBox="0 0 32 29" xmlns="http://www.w3.org/2000/svg">' +
+          '<path d="M16 27S2 18.3 2 9.6C2 4.9 5.7 2 9.6 2c2.6 0 5 1.4 6.4 3.8C17.4 3.4 19.8 2 22.4 2 26.3 2 30 4.9 30 9.6 30 18.3 16 27 16 27Z" ' +
+          'fill="none" stroke="black" stroke-width="1.6"/>' +
+          '</svg>' +
+          '<span class="heart-number">' + day + '</span>';
       } else {
         cell.textContent = day;
       }

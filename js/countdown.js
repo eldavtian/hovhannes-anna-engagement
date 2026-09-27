@@ -1,44 +1,81 @@
 // ============================================
-// COUNTDOWN.JS — Live countdown to ENGAGEMENT_DATE (set in config.js)
-// Updates every minute: shows Days, Hours, Minutes remaining.
+// COUNTDOWN.JS — Live countdown with a flip-calendar page-turn effect,
+// updating every second (Days / Hours / Minutes / Seconds).
 // ============================================
 
 document.addEventListener("DOMContentLoaded", initCountdown);
 
 function initCountdown() {
-  const daysEl = document.getElementById("countdown-days");
-  const hoursEl = document.getElementById("countdown-hours");
-  const minutesEl = document.getElementById("countdown-minutes");
+  const units = {
+    days: createFlipUnit("flip-days"),
+    hours: createFlipUnit("flip-hours"),
+    minutes: createFlipUnit("flip-minutes"),
+    seconds: createFlipUnit("flip-seconds")
+  };
 
-  // Guard: if these elements don't exist on the page, stop here (avoids console errors)
-  if (!daysEl || !hoursEl || !minutesEl) return;
+  if (!units.days) return; // guard: elements not found
 
-  updateCountdown(); // run once immediately so numbers aren't blank for the first minute
-  setInterval(updateCountdown, 1000 * 30); // then refresh every 30 seconds
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
   function updateCountdown() {
     const now = new Date();
-    const diffMs = ENGAGEMENT_DATE - now; // ENGAGEMENT_DATE comes from config.js
+    const diffMs = ENGAGEMENT_DATE - now;
 
-    if (diffMs <= 0) {
-      // The date has already arrived/passed
-      daysEl.textContent = "00";
-      hoursEl.textContent = "00";
-      minutesEl.textContent = "00";
-      return;
+    let days = 0, hours = 0, minutes = 0, seconds = 0;
+
+    if (diffMs > 0) {
+      const totalSeconds = Math.floor(diffMs / 1000);
+      days = Math.floor(totalSeconds / (3600 * 24));
+      hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      minutes = Math.floor((totalSeconds % 3600) / 60);
+      seconds = totalSeconds % 60;
     }
 
-    const totalMinutes = Math.floor(diffMs / (1000 * 60));
-    const days = Math.floor(totalMinutes / (60 * 24));
-    const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
-    const minutes = totalMinutes % 60;
-
-    daysEl.textContent = padNumber(days);
-    hoursEl.textContent = padNumber(hours);
-    minutesEl.textContent = padNumber(minutes);
+    setUnitValue(units.days, padNumber(days));
+    setUnitValue(units.hours, padNumber(hours));
+    setUnitValue(units.minutes, padNumber(minutes));
+    setUnitValue(units.seconds, padNumber(seconds));
   }
 
-  // Turns 5 into "05" for a cleaner two-digit look
+  // Gathers the card + its front/back face elements for one flip unit
+  function createFlipUnit(id) {
+    const card = document.getElementById(id);
+    if (!card) return null;
+
+    return {
+      card: card,
+      front: card.querySelector(".flip-card-front span"),
+      back: card.querySelector(".flip-card-back span"),
+      currentValue: card.querySelector(".flip-card-front span").textContent
+    };
+  }
+
+  // If the value actually changed, play the flip animation; otherwise do nothing
+  function setUnitValue(unit, newValue) {
+    if (unit.currentValue === newValue) return; // no change, no flip needed
+
+    unit.back.textContent = newValue;      // load new value into the back face first
+    unit.card.classList.add("flipping");   // trigger the CSS flip transition
+
+    // After the flip animation finishes, snap the front to the new value
+    // and reset instantly (no transition) so it's ready to flip again next time
+    setTimeout(function () {
+      unit.card.classList.remove("flipping");
+      unit.card.classList.add("no-transition");
+      unit.front.textContent = newValue;
+      unit.back.textContent = newValue;
+
+      // Force the browser to apply the "no transition" state before removing it,
+      // otherwise the reset itself would visibly animate backward
+      requestAnimationFrame(function () {
+        unit.card.classList.remove("no-transition");
+      });
+
+      unit.currentValue = newValue;
+    }, 600); // matches the 0.6s transition duration in CSS
+  }
+
   function padNumber(num) {
     return num.toString().padStart(2, "0");
   }

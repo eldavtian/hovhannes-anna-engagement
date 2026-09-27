@@ -21,7 +21,7 @@ function initEnvelope() {
   function playOpeningSequence() {
     // Step A: flap swings open
     flap.classList.add("open");
-
+    if (window.startBackgroundMusic) window.startBackgroundMusic();
     // Step B: after the flap finishes opening, fade the whole envelope screen out
     setTimeout(function () {
       envelopeScreen.classList.add("closing");
@@ -32,7 +32,7 @@ function initEnvelope() {
       envelopeScreen.classList.add("hidden");
       invitationScreen.classList.remove("hidden");
       invitationScreen.classList.add("revealed");
-
+document.getElementById("vinyl-button").classList.remove("hidden");
       // Scroll to top so the guest starts at the beginning of the invitation
       window.scrollTo({ top: 0, behavior: "instant" });
     }, 2100); // 900ms (flap) + 1200ms (screen fade) = 2100ms total

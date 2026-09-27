@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Marcellus&family=Noto+Sans+Armenian:wght@300;400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Noto+Sans+Armenian:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
@@ -18,13 +18,16 @@
   <canvas id="particles-canvas"></canvas>
 
   <!-- ============ SCREEN 1: ENVELOPE ============ -->
-  <section id="envelope-screen">
-    <div id="envelope" class="envelope">
+    <section id="envelope-screen">
+         <div id="envelope" class="envelope">
       <div class="envelope-back"></div>
+      <div class="envelope-side envelope-side-left"></div>
+      <div class="envelope-side envelope-side-right"></div>
+      <div class="envelope-pocket-front"></div>
       <div class="envelope-flap"></div>
-      <div class="envelope-seal">Հ&Ա</div>
+      <div class="envelope-seal">Հ & Ա</div>
     </div>
-    <p class="envelope-hint">Սեղմեք՝ հրավերը բացելու համար</p>
+    <p class="envelope-hint">Սեղմեք՝ բացելու համար</p>
   </section>
 
   <!-- ============ SCREEN 2: INVITATION ============ -->
@@ -39,33 +42,58 @@
       <h1 class="hero-title fade-in-up">Հովհաննես <span class="ampersand">&</span> Աննա</h1>
 
       <p class="hero-text fade-in-up">
-        Մեծ սիրով և հուզմունքով հրավիրում ենք Ձեզ կիսելու մեզ հետ մեր կյանքի ամենաերջանիկ պահերից մեկը։
-        Ձեր ներկայությունը մեզ համար կլինի ամենաթանկ նվերը այս հատուկ օրում։
+        Մեծ սիրով և հրավիրում ենք Ձեզ կիսելու մեզ հետ մեր կյանքի ամենաերջանիկ պահերից մեկը։
+        
       </p>
     </section>
 
     <!-- ============ COUNTDOWN ============ -->
+        <!-- ============ COUNTDOWN ============ -->
     <section id="countdown-section" class="countdown-section">
-      <h2 class="section-title">Մինչև մեր նշանադրությունը մնաց</h2>
+      <h2 class="section-title">Մինչև մեր նշանադրությունը</h2>
+      <div class="t"></div>
+
       <div class="countdown-grid">
-        <div class="countdown-box">
-          <span id="countdown-days" class="countdown-number">00</span>
+
+        <div class="flip-unit">
+          <div class="flip-card" id="flip-days">
+            <div class="flip-card-face flip-card-front"><span>00</span></div>
+            <div class="flip-card-face flip-card-back"><span>00</span></div>
+          </div>
           <span class="countdown-label">Օր</span>
         </div>
-        <div class="countdown-box">
-          <span id="countdown-hours" class="countdown-number">00</span>
+
+        <div class="flip-unit">
+          <div class="flip-card" id="flip-hours">
+            <div class="flip-card-face flip-card-front"><span>00</span></div>
+            <div class="flip-card-face flip-card-back"><span>00</span></div>
+          </div>
           <span class="countdown-label">Ժամ</span>
         </div>
-        <div class="countdown-box">
-          <span id="countdown-minutes" class="countdown-number">00</span>
+
+        <div class="flip-unit">
+          <div class="flip-card" id="flip-minutes">
+            <div class="flip-card-face flip-card-front"><span>00</span></div>
+            <div class="flip-card-face flip-card-back"><span>00</span></div>
+          </div>
           <span class="countdown-label">Րոպե</span>
         </div>
+
+        <div class="flip-unit">
+          <div class="flip-card" id="flip-seconds">
+            <div class="flip-card-face flip-card-front"><span>00</span></div>
+            <div class="flip-card-face flip-card-back"><span>00</span></div>
+          </div>
+          <span class="countdown-label">Վայրկյան</span>
+        </div>
+
       </div>
     </section>
 
     <!-- ============ CALENDAR ============ -->
     <section id="calendar-section" class="calendar-section">
       <h2 class="section-title">Հոկտեմբեր 2026</h2>
+      <div class="ornament"></div>
       <div id="calendar-grid" class="calendar-grid">
         <!-- calendar.js fills this in automatically -->
       </div>
@@ -73,11 +101,12 @@
 
     <!-- ============ ENGAGEMENT INFO CARDS ============ -->
     <section id="info-section" class="info-section">
-      <h2 class="section-title">Միջոցառման մանրամասները</h2>
+      <h2 class="section-title">Միջոցառման անծկացման վայրը</h2>
+      <div class="ornament"></div>
       <div class="info-cards">
 
         <div class="info-card">
-          <div class="info-icon">🍽️</div>
+          <div class="info-icon">⚲</div>
           <h3 class="info-card-title">Ռեստորան</h3>
           <p class="info-card-text">«Լանջ»</p>
           <p class="info-card-text info-time">Ժամը՝ 18:00</p>
@@ -96,32 +125,25 @@
 
     <!-- ============ GALLERY ============ -->
     <section id="gallery-section" class="gallery-section">
-   
+      
+      <div class="ornament"></div>
 
-      <div class="gallery-slider">
-        <button id="gallery-prev" class="gallery-arrow gallery-arrow-left" aria-label="Նախորդը">‹</button>
-
-        <div class="gallery-track-wrapper">
-          <div id="gallery-track" class="gallery-track">
-            <img src="assets/images/gallery1.jpg" alt="Հուշ 1" class="gallery-image" loading="lazy" />
-            <img src="assets/images/gallery2.jpg" alt="Հուշ 2" class="gallery-image" loading="lazy" />
-            <img src="assets/images/gallery3.jpg" alt="Հուշ 3" class="gallery-image" loading="lazy" />
-            <img src="assets/images/gallery4.jpg" alt="Հուշ 4" class="gallery-image" loading="lazy" />
-          </div>
+      <div class="gallery-track-wrapper">
+        <div id="gallery-track" class="gallery-track">
+          <img src="assets/images/gallery1.jpg" alt="Հուշ 1" class="gallery-image" loading="lazy" />
+          <img src="assets/images/gallery2.jpg" alt="Հուշ 2" class="gallery-image" loading="lazy" />
+          <img src="assets/images/gallery3.jpg" alt="Հուշ 3" class="gallery-image" loading="lazy" />
+          <img src="assets/images/gallery4.jpg" alt="Հուշ 4" class="gallery-image" loading="lazy" />
         </div>
-
-        <button id="gallery-next" class="gallery-arrow gallery-arrow-right" aria-label="Հաջորդը">›</button>
       </div>
 
-      <div id="gallery-dots" class="gallery-dots">
-        <!-- gallery.js fills these in automatically -->
-      </div>
+      <div id="gallery-dots" class="gallery-dots"></div>
     </section>
 
        <!-- ============ RSVP FORM ============ -->
     <section id="rsvp-section" class="rsvp-section">
       <h2 class="section-title">Հաստատեք Ձեր մասնակցությունը</h2>
-
+<div class="ornament"></div>
       <form id="rsvp-form" class="rsvp-form">
 
         <div class="form-group">
@@ -159,6 +181,10 @@
 
       </form>
     </section>
+    <footer class="site-footer">
+      <p class="footer-initials">Հ & Ա</p>
+      <p class="footer-date">31.10.2026</p>
+    </footer>
   </main>
 
   <script src="js/config.js"></script>
@@ -168,6 +194,8 @@
   <script src="js/calendar.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/rsvp.js"></script>
-
+<audio id="bg-music" src="assets/audio/song.mp3" loop preload="auto"></audio>
+   <button id="vinyl-button" class="vinyl-button hidden" aria-label="Երաժշտություն"></button>
+  <script src="js/music.js"></script>
 </body>
 </html>

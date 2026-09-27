@@ -1,30 +1,37 @@
 /* ============================================
-   VARIABLES.CSS — Central design tokens
+   VARIABLES.CSS — New palette: ivory, sage, blush pink
    ============================================ */
 
 :root {
-  --color-bg: #1a1410;
-  --color-bg-light: #2a2018;
-  --color-cream: #f6ecdf;
-  --color-gold: #c9a15a;
-  --color-gold-light: #e6cd9a;
-  --color-burgundy: #6b1f2a;
-  --color-white: #ffffff;
+  /* --- Colors --- */
+  --color-bg: #faf6f1;              /* warm ivory white */
+  --color-bg-card: #ffffff;         /* pure white for cards */
+  --color-sage: #8a9a7e;            /* muted sage green */
+  --color-sage-dark: #5f6f54;       /* deep sage for text accents */
+  --color-sage-pale: #e4e9df;       /* very light sage for backgrounds */
+  --color-pink: #e3c2c2;            /* soft blush pink */
+  --color-pink-dark: #c99a9a;       /* deeper rose for accents */
+  --color-text: #47433d;            /* soft charcoal, not pure black */
+  --color-text-light: #837c72;
+  --color-line: #ddd4c8;            /* hairline borders */
 
+  /* --- Fonts --- */
   --font-heading: 'Playfair Display', serif;
-  --font-accent: 'Marcellus', serif;
+  --font-accent: 'Cormorant Garamond', serif;
   --font-body: 'Noto Sans Armenian', sans-serif;
 
+  /* --- Spacing --- */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 6rem;
 
-  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.35);
-  --transition-slow: 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+  /* --- Effects --- */
+  --shadow-soft: 0 15px 40px rgba(90, 80, 60, 0.1);
+  --shadow-card: 0 4px 20px rgba(90, 80, 60, 0.08);
+  --transition-slow: 1.4s cubic-bezier(0.65, 0, 0.35, 1);
   --transition-medium: 0.6s ease;
   --transition-fast: 0.3s ease;
-
-  --radius-card: 16px;
-}
+--radius-card: 22px;
+ }
