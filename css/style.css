@@ -35,25 +35,23 @@ body {
   pointer-events: none;
 }
 
-/* ============ Ornamental divider ============ */
+/* ============ Ornament — simple pink outlined heart ============ */
 .ornament {
-  width: 60px;
-  height: 1px;
-  background: var(--color-sage);
-  margin: 0.9rem auto var(--space-md);
-  position: relative;
+  width: 22px;
+  height: 20px;
+  margin: 0.5rem auto var(--space-md);
+  background: none;
 }
 
 .ornament::before {
-  content: "❦";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--color-bg);
-  padding: 0 10px;
-  color: var(--color-pink-dark);
-  font-size: 1rem;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 29'><path d='M16 27S2 18.3 2 9.6C2 4.9 5.7 2 9.6 2c2.6 0 5 1.4 6.4 3.8C17.4 3.4 19.8 2 22.4 2 26.3 2 30 4.9 30 9.6 30 18.3 16 27 16 27Z' fill='none' stroke='%23c99a9a' stroke-width='2'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .section-title {
@@ -67,8 +65,7 @@ body {
 }
 
 /* ============================================
-   ENVELOPE SCREEN — reworked for a genuinely
-   elegant, dimensional closed-envelope look
+   ENVELOPE SCREEN
    ============================================ */
 
 #envelope-screen {
@@ -93,7 +90,6 @@ body {
   filter: drop-shadow(0 25px 35px rgba(90, 70, 50, 0.18));
 }
 
-/* Soft contact shadow on the "ground" beneath the envelope */
 .envelope::before {
   content: "";
   position: absolute;
@@ -106,7 +102,6 @@ body {
   z-index: -1;
 }
 
-/* Base card — a thin paper edge visible all around, giving the envelope real thickness */
 .envelope-back {
   position: absolute;
   inset: 0;
@@ -114,7 +109,6 @@ body {
   border-radius: 10px;
 }
 
-/* Left + right side folds, shaded differently to suggest a subtle 3D crease */
 .envelope-side {
   position: absolute;
   inset: 2px;
@@ -131,7 +125,6 @@ body {
   clip-path: polygon(100% 2%, 52% 50%, 100% 98%);
 }
 
-/* Front lower pocket panel */
 .envelope-pocket-front {
   position: absolute;
   inset: 2px;
@@ -141,7 +134,6 @@ body {
   z-index: 2;
 }
 
-/* Fine gold seam line tracing the pocket's fold, for a touch of quiet luxury */
 .envelope-pocket-front::after {
   content: "";
   position: absolute;
@@ -151,7 +143,6 @@ body {
   pointer-events: none;
 }
 
-/* The opening top flap */
 .envelope-flap {
   position: absolute;
   top: 0;
@@ -167,7 +158,6 @@ body {
   box-shadow: inset 0 -1px 0 rgba(180, 150, 110, 0.25);
 }
 
-/* Delicate gold trim line along the flap's outer edge */
 .envelope-flap::after {
   content: "";
   position: absolute;
@@ -177,7 +167,6 @@ body {
   pointer-events: none;
 }
 
-/* Wax seal, sitting exactly where the flap's point meets the pocket's point */
 .envelope-seal {
   position: absolute;
   top: 50%;
@@ -267,42 +256,118 @@ body {
   margin: 0 auto;
 }
 
-/* ============ Countdown (full-bleed, more visible background) ============ */
+/* ============================================
+   COUNTDOWN — elegant framed flip panel
+   ============================================ */
 .countdown-section {
   position: relative;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   text-align: center;
-  padding: var(--space-lg) var(--space-sm);
-  background-image: linear-gradient(rgba(250, 246, 241, 0.45), rgba(250, 246, 241, 0.55)), url("../assets/images/countdown-bg.jpg");
+  padding: var(--space-xl) var(--space-sm);
+  background-image: linear-gradient(rgba(250, 246, 241, 0.4), rgba(250, 246, 241, 0.5)), url("../assets/images/countdown-bg.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
 .countdown-grid {
+  position: relative;
   display: flex;
   justify-content: center;
-  gap: var(--space-md);
+  align-items: flex-end;
+  gap: var(--space-lg);
   flex-wrap: wrap;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+ 
 }
 
-.countdown-box {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(4px);
-  border: 1px solid var(--color-line);
-  border-top: 2px solid var(--color-sage);
-  border-radius: var(--radius-card);
-  padding: var(--space-md) var(--space-sm);
-  min-width: 100px;
-  box-shadow: var(--shadow-card);
+/* Thin gold flourish lines top and bottom of the panel */
+.countdown-grid::before,
+.countdown-grid::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-sage), transparent);
 }
 
-.countdown-number {
-  display: block;
+.countdown-grid::before {
+  top: 14px;
+}
+
+.countdown-grid::after {
+  bottom: 14px;
+}
+
+.flip-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.flip-card {
+  position: relative;
+  width: 84px;
+  height: 96px;
+  perspective: 320px;
+}
+
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #fffdf9, #f2ead9);
+  border: 1px solid rgba(180, 150, 110, 0.3);
+  border-top: 2px solid var(--color-pink-dark);
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(90, 70, 50, 0.16);
+  backface-visibility: hidden;
   font-family: var(--font-heading);
-  font-size: 2.6rem;
+  font-size: 2.3rem;
+  font-weight: 600;
   color: var(--color-sage-dark);
+  transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-face::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  top: 50%;
+  height: 1px;
+  background: rgba(180, 150, 110, 0.3);
+}
+
+.flip-card-front {
+  transform: rotateX(0deg);
+  z-index: 2;
+}
+
+.flip-card-back {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.flip-card.flipping .flip-card-front {
+  transform: rotateX(-180deg);
+}
+
+.flip-card.flipping .flip-card-back {
+  transform: rotateX(0deg);
+}
+
+.flip-card.no-transition .flip-card-face {
+  transition: none;
 }
 
 .countdown-label {
@@ -310,8 +375,8 @@ body {
   font-family: var(--font-accent);
   font-style: italic;
   font-size: 0.95rem;
-  margin-top: var(--space-xs);
-  color: var(--color-text-light);
+  color: var(--color-sage-dark);
+  letter-spacing: 0.5px;
 }
 
 /* ============ Calendar ============ */
@@ -452,7 +517,7 @@ body {
   color: #fff;
 }
 
-/* ============ Gallery (auto-scrolling) ============ */
+/* ============ Gallery (auto-scrolling, no dots, no arrows) ============ */
 .gallery-section {
   padding: var(--space-lg) 0;
   text-align: center;
@@ -480,24 +545,7 @@ body {
 }
 
 .gallery-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: var(--space-sm);
-}
-
-.gallery-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid var(--color-sage);
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-.gallery-dot.active {
-  background: var(--color-sage);
+  display: none;
 }
 
 /* ============ RSVP ============ */
@@ -685,12 +733,21 @@ body {
   }
 
   .countdown-section {
-    background-attachment: scroll; /* fixed backgrounds can glitch on mobile Safari */
+    background-attachment: scroll;
   }
 
-  .countdown-box {
-    min-width: 75px;
-    padding: var(--space-sm) var(--space-xs);
+  .countdown-grid {
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .flip-card {
+    width: 62px;
+    height: 72px;
+  }
+
+  .flip-card-face {
+    font-size: 1.6rem;
   }
 
   .vinyl-button {
@@ -701,80 +758,3 @@ body {
   }
 }
 
-.countdown-grid {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-  flex-wrap: wrap;
-}
-
-.flip-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-/* The 3D "page" container */
-.flip-card {
-  position: relative;
-  width: 84px;
-  height: 92px;
-  perspective: 300px;
-}
-
-/* Both faces share size/position; only one is visible at a time via backface-visibility */
-.flip-card-face {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, #fffdf9, #f2ead9);
-  border: 1px solid var(--color-line);
-  border-radius: 10px;
-  box-shadow: 0 6px 14px rgba(90, 70, 50, 0.15);
-  backface-visibility: hidden;
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  color: var(--color-sage-dark);
-  transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
-  transform-style: preserve-3d;
-}
-
-/* A center seam line, like a real flip-calendar page split */
-.flip-card-face::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  top: 50%;
-  height: 1px;
-  background: rgba(90, 70, 50, 0.15);
-}
-
-.flip-card-front {
-  transform: rotateX(0deg);
-  z-index: 2;
-}
-
-.flip-card-back {
-  transform: rotateX(180deg);
-  z-index: 1;
-}
-
-/* Triggered by JS: flips the front page forward and down, revealing the back */
-.flip-card.flipping .flip-card-front {
-  transform: rotateX(-180deg);
-}
-
-.flip-card.flipping .flip-card-back {
-  transform: rotateX(0deg);
-}
-
-.flip-card.no-transition .flip-card-face {
-  transition: none;
-}
-.t{
-    height: 20px;
-}
