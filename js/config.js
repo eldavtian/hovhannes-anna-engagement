@@ -7,7 +7,7 @@
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVm587iZFGYbMmbEKnUNZkGotEh84n2prI4Og5UIrqSemJ1HBWctlUDj0OXvbcV7Ma/exec";
 
 // Admin dashboard password (change this to something only you know)
-const ADMIN_PASSWORD = "ChangeThisPassword123";
+const ADMIN_PASSWORD = "annahovo123";
 
 // Engagement date — used by countdown.js and calendar.js
 // Format: Year, Month (0 = January, so October = 9), Day, Hour, Minute
