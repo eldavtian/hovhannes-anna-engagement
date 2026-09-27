@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ադմին վահանակ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Sans+Armenian:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <section id="login-screen" class="login-screen">
+    <form id="login-form" class="login-form">
+      <h1 class="login-title">Ադմին մուտք</h1>
+      <input type="password" id="login-password" placeholder="Գաղտնաբառ" required />
+      <button type="submit" class="login-btn">Մուտք</button>
+      <p id="login-error" class="login-error"></p>
+    </form>
+  </section>
+
+  <!-- ============ DASHBOARD (hidden until login succeeds) ============ -->
+  <section id="dashboard-screen" class="dashboard-screen hidden">
+
+    <header class="dashboard-header">
+      <h1>Հյուրերի պատասխանները</h1>
+      <button id="logout-btn" class="logout-btn">Ելք</button>
+    </header>
+
+    <div class="dashboard-controls">
+      <input type="text" id="search-input" placeholder="Փնտրել ըստ անվան..." class="search-input" />
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Բոլորը</button>
+        <button class="filter-btn" data-filter="coming">Գալիս են</button>
+        <button class="filter-btn" data-filter="not-coming">Չեն գալիս</button>
+        <button class="filter-btn" data-filter="newest">Նորերը</button>
+        <button class="filter-btn" data-filter="oldest">Հները</button>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <span id="stat-total">Ընդամենը՝ 0</span>
+      <span id="stat-coming">Գալիս են՝ 0</span>
+      <span id="stat-guests">Հյուրերի քանակ՝ 0</span>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="rsvp-table" class="rsvp-table">
+        <thead>
+          <tr>
+            <th>Անուն</th>
+            <th>Մասնակցություն</th>
+            <th>Հյուրեր</th>
+            <th>Ամսաթիվ</th>
+          </tr>
+        </thead>
+        <tbody id="rsvp-table-body">
+          <!-- admin.js fills this in -->
+        </tbody>
+      </table>
+      <p id="table-empty-message" class="table-empty-message hidden">Դեռ պատասխաններ չկան։</p>
+    </div>
+
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

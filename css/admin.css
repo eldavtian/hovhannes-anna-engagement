@@ -1,0 +1,225 @@
+/* ============================================
+   ADMIN.CSS — Dashboard-only styling
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-cream);
+  min-height: 100vh;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ============ Login screen ============ */
+.login-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg) var(--space-md);
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.login-title {
+  font-family: var(--font-heading);
+  color: var(--color-gold-light);
+  margin-bottom: var(--space-md);
+  font-size: 1.6rem;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: var(--space-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-gold);
+  border-radius: 8px;
+  color: var(--color-cream);
+  font-size: 1rem;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.login-btn:hover {
+  background: var(--color-gold-light);
+}
+
+.login-error {
+  margin-top: var(--space-sm);
+  color: #e08b8b;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+/* ============ Dashboard ============ */
+.dashboard-screen {
+  padding: var(--space-md);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.dashboard-header h1 {
+  font-family: var(--font-heading);
+  color: var(--color-gold-light);
+  font-size: 1.6rem;
+}
+
+.logout-btn {
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-light);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.logout-btn:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+.dashboard-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.7rem 1rem;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-gold);
+  border-radius: 8px;
+  color: var(--color-cream);
+  font-size: 0.95rem;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-gold);
+  color: var(--color-cream);
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+.stats-bar {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+  font-size: 0.9rem;
+  color: var(--color-gold-light);
+}
+
+.table-wrapper {
+  overflow-x: auto; /* allows horizontal scroll on small screens instead of breaking layout */
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-card);
+  padding: var(--space-sm);
+}
+
+.rsvp-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px; /* forces horizontal scroll on very narrow screens instead of crushing columns */
+}
+
+.rsvp-table th,
+.rsvp-table td {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(201, 161, 90, 0.25);
+  font-size: 0.9rem;
+}
+
+.rsvp-table th {
+  color: var(--color-gold);
+  font-family: var(--font-accent);
+  font-weight: 600;
+}
+
+.badge {
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.yes {
+  background: rgba(127, 191, 127, 0.2);
+  color: #7fbf7f;
+}
+
+.badge.no {
+  background: rgba(224, 139, 139, 0.2);
+  color: #e08b8b;
+}
+
+.table-empty-message {
+  text-align: center;
+  padding: var(--space-md);
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .dashboard-header h1 {
+    font-size: 1.3rem;
+  }
+}

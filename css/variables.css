@@ -1,0 +1,30 @@
+/* ============================================
+   VARIABLES.CSS — Central design tokens
+   ============================================ */
+
+:root {
+  --color-bg: #1a1410;
+  --color-bg-light: #2a2018;
+  --color-cream: #f6ecdf;
+  --color-gold: #c9a15a;
+  --color-gold-light: #e6cd9a;
+  --color-burgundy: #6b1f2a;
+  --color-white: #ffffff;
+
+  --font-heading: 'Playfair Display', serif;
+  --font-accent: 'Marcellus', serif;
+  --font-body: 'Noto Sans Armenian', sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --transition-slow: 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+  --transition-medium: 0.6s ease;
+  --transition-fast: 0.3s ease;
+
+  --radius-card: 16px;
+}
