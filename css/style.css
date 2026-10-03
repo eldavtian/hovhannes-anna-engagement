@@ -35,6 +35,20 @@ body {
   pointer-events: none;
 }
 
+/* ============================================
+   SCROLL REVEAL — sections fade/rise into view
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ============ Ornament — simple pink outlined heart ============ */
 .ornament {
   width: 22px;
@@ -218,7 +232,7 @@ body {
   width: 320px;
   height: 320px;
   margin: 0 auto var(--space-md);
-  border-radius: 24px;
+  border-radius: 50%;
   overflow: hidden;
   border: 1px solid var(--color-sage);
   outline: 1px solid var(--color-sage);
@@ -257,7 +271,7 @@ body {
 }
 
 /* ============================================
-   COUNTDOWN — elegant framed flip panel
+   COUNTDOWN — elegant floating flip panel, no white backing
    ============================================ */
 .countdown-section {
   position: relative;
@@ -265,7 +279,7 @@ body {
   margin-left: calc(-50vw + 50%);
   text-align: center;
   padding: var(--space-xl) var(--space-sm);
-  background-image: linear-gradient(rgba(250, 246, 241, 0.4), rgba(250, 246, 241, 0.5)), url("../assets/images/countdown-bg.jpg");
+  background-image: url("../assets/images/countdown-bg.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -281,7 +295,6 @@ body {
   max-width: 640px;
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md) var(--space-md);
- 
 }
 
 /* Thin gold flourish lines top and bottom of the panel */
@@ -756,8 +769,4 @@ body {
     bottom: 16px;
     right: 16px;
   }
-}
-
-.t{
-    height: 20px;
 }
